@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mèo hoạt ảnh</title>
+  <style>
+    /* CSS cho hoạt ảnh mèo */
+    #cat {
+      width: 200px;
+      animation: moveCat 3s infinite;
+    }
+
+    @keyframes moveCat {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(100px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mèo hoạt ảnh</h1>
+  <!-- Hình ảnh mèo -->
+  <img id="cat" src="https://i.imgur.com/JT4vO2a.png" alt="Mèo" />
+
+  <!-- Nút bấm -->
+  <button id="restartBtn">Restart Animation & Meow</button>
+
+  <!-- Âm thanh meow -->
+  <audio id="meowSound" src="https://www.soundjay.com/cat/cat-meow-1.mp3"></audio>
+
+  <script>
+    const cat = document.getElementById('cat');
+    const btn = document.getElementById('restartBtn');
+    const meow = document.getElementById('meowSound');
+
+    btn.addEventListener('click', () => {
+      // Restart animation bằng cách xóa và thêm lại class
+      cat.style.animation = 'none';
+      cat.offsetHeight; // trigger reflow
+      cat.style.animation = null;
+
+      // Phát âm thanh meow
+      meow.currentTime = 0;
+      meow.play();
+    });
+  </script>
+
+</body>
+</html>

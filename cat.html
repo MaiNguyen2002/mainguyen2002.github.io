@@ -5,26 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mèo hoạt ảnh</title>
   <style>
-    /* CSS cho hoạt ảnh mèo */
+    /* Reset CSS cơ bản */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+      color: #333;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* CSS cho ảnh mèo */
     #cat {
-      width: 200px;
+      width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       animation: moveCat 3s infinite;
     }
 
     @keyframes moveCat {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(100px); }
+      50% { transform: translateX(120px); }
+    }
+
+    /* Nút bấm */
+    #restartBtn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #fff;
+      background: #ff6f61;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    #restartBtn:hover {
+      background: #ff3b2e;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    #restartBtn:active {
+      transform: scale(0.98);
     }
   </style>
 </head>
 <body>
 
-  <h1>Mèo hoạt ảnh</h1>
+  <h1>🐱 Mèo hoạt ảnh 🐾</h1>
   <!-- Hình ảnh mèo -->
   <img id="cat" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg" alt="Mèo" />
 
   <!-- Nút bấm -->
-  <button id="restartBtn">Restart Animation & Meow</button>
+  <button id="restartBtn">🔄 Restart Animation & Meow</button>
 
   <!-- Âm thanh meow -->
   <audio id="meowSound" src="https://www.soundjay.com/cat/cat-meow-1.mp3"></audio>
@@ -35,7 +85,7 @@
     const meow = document.getElementById('meowSound');
 
     btn.addEventListener('click', () => {
-      // Restart animation bằng cách xóa và thêm lại class
+      // Restart animation bằng cách xóa và thêm lại animation
       cat.style.animation = 'none';
       cat.offsetHeight; // trigger reflow
       cat.style.animation = null;
@@ -48,3 +98,4 @@
 
 </body>
 </html>
+
